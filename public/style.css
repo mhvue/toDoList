@@ -1,3 +1,12 @@
+
+.allTaskHolder{
+    border: 2px solid;
+    padding: 5px;
+}
+
+input{
+    margin-top: 5px;
+}
 .striked{
     text-decoration: line-through;
 }
@@ -9,5 +18,5 @@
 .taskContainer{
     overflow: auto;
     height: 300px;
-    
+    border-left: black;
 }

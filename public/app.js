@@ -47,3 +47,8 @@ $("#clearBtn", document.body).on("click", function(){
     }
    
 })
+
+
+//need to do:
+    //incorpoate localStorage 
+    //user msg if taskContainer is empty via modal
