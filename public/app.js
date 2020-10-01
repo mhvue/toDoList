@@ -10,7 +10,7 @@ $("#btn").on("click", function(event){
     const text = $("#taskName").val().trim()
 
     //creating a delete button
-    const deleteBtn= $("<button>").text("Done").addClass("deleteTask")
+    const doneBtn= $("<button>").text("Done").addClass("deleteTask")
 
 
     //clearing our input box 
@@ -20,11 +20,11 @@ $("#btn").on("click", function(event){
     const taskInfo = $("<p>").text(numberTask + ")" + text).addClass("textList").attr("id","taskNo."+numberTask)
 
     //append the input text to the div, allow it to show 
-    $(".taskContainer").append(taskInfo, deleteBtn);
+    $(".taskContainer").append(taskInfo, doneBtn);
 
-    //option to delete the tasks
+    //option to strike out the tasks
     $(".deleteTask").on("click",function(){
-        //need to grab that speific task then change class to striked and using css, have it strike out that tasks
+        //need to grab that speific task then change class to striked and using css, have it strike out that tasks 
         const taskNoInfo= $(this).prev().removeClass("textList").addClass("striked")
                     
     });
@@ -32,12 +32,18 @@ $("#btn").on("click", function(event){
 });
 
   //clear task list 
-    $("#clearBtn", document.body).on("click", function(){
+$("#clearBtn", document.body).on("click", function(){
 
-        //delete everything in the taskContainer
-        $(".textList, .striked,.deleteTask").remove();
+     //adding msg if there are empty div in the taskContainer but clear all btn was pressed
+     if($(".taskContainer").contents().length == 0){
+        console.log("empty");
+    }
+    else{
+    //delete everything in the taskContainer
+    $(".textList, .striked,.deleteTask").remove();
 
-        //resting numbers back to 0 so a new list can start with correct numerical order again
-        numberTask=0;
-     
-    })
+    //resting numbers back to 0 so a new list can start with correct numerical order again
+    numberTask=0;
+    }
+   
+})
