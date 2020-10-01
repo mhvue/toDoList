@@ -1,3 +1,11 @@
 .striked{
     text-decoration: line-through;
 }
+
+#clearAll{
+    font-weight: bold;
+}
+
+.taskContainer{
+    overflow: scroll;
+}
