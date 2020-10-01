@@ -17,14 +17,11 @@ $("#btn").on("click", function(event){
     $(".taskContainer").append(taskInfo, deleteBtn);
 
     //option to delete the tasks
-    $(".deleteTask").on("click", ".textList",function(){
-
-        //need to grab that speific task 
-        const taskNoInfo= $(this).siblings().text();
-        console.log(typeof taskNoInfo)
+    $(".deleteTask").on("click",function(){
+        //console.log("cilcked")
+        //need to grab that speific task then change class to striked and using css, strike out that tasks
+        const taskNoInfo= $(this).prev().removeClass("textList").addClass("striked")
       
-        //strike out that tasks
-        taskNoInfo.strike();
-        
+                    
     })
 });
