@@ -1,9 +1,37 @@
-let numberTask=0;
+let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 
-if(localStorage != null){
-    $(".taskContainer").html(JSON.parse(localStorage.getItem("taskInfo")))
+
+function addTasks(task){
+    const info="<li><span>" + task + "</span><button class='deleteTask'>Done</button></li>";
+
+    $("#taskList").append(info); 
 }
 
+function saveTaskData(){
+    //console.log(this)
+    //scan the list for objects that are not removed 
+    // $("#taskList > li") //direct children
+    // $("#taskList  li") //desecent children
+    let arr=[];
+
+    //take those and save them into an new array. we will use this new array to save to local storage 
+    $("#taskList > li").not(".striked").children("span").each(function(){
+        console.log(this);
+        arr.push($(this).text());
+    });
+
+    //take those and save them into an new array. we will use this new array to save to local storage 
+    localStorage.setItem("taskInfo", JSON.stringify(arr))
+
+    //set local storage
+}
+
+
+for(let i = 0; i < taskArr.length; i++){
+    addTasks(taskArr[i]);
+}
+
+ 
 $("#btn").on("click", function(event){
     //prevent the default action of the button on this form
     event.preventDefault();
@@ -11,35 +39,14 @@ $("#btn").on("click", function(event){
     //grabs the text inputted
     const text = $("#taskName").val().trim();
 
-    //creating a delete button
-     doneBtn= $("<button>").text("Done").addClass("deleteTask")
-
     if(text) {
-      
         $("#cannotBlank").remove();
-        $("#nothingMsg").remove()
-        //numberTask will increase to allow numbered list in tasks entered
-        numberTask++; 
+        $("#nothingMsg").remove();
+        
 
-        //variable to hold the text entered by user, with a class and id 
-       //const taskInfo = $("<p>").val(numberTask + ")", text).addClass("textList").attr("id","taskNo."+numberTask)
-    
-        localStorage.setItem("taskInfo", JSON.stringify(numberTask + ")" + text))
-         const data = JSON.parse(localStorage.getItem("taskInfo"))
+        addTasks(text);
 
-        //append the input text to the div, allow it to show 
-        const info="<span class='textList' id='taskNo.'>" + data + "</span>";
-
-        $(".taskContainer").append(info, doneBtn)
-
-    
-        //option to strike out the tasks
-        $(".deleteTask").on("click",function(){
-            //need to grab that speific task then change class to striked and using css, have it strike out that tasks 
-            const taskNoInfo= $(this).prev().removeClass("textList").addClass("striked")
-            localStorage.removeItem("taskInfo")
-        });
-
+        saveTaskData();
         //clearing our input box 
         $("#taskName").val(" ");
     }
@@ -48,6 +55,20 @@ $("#btn").on("click", function(event){
     }
 
 });
+
+
+ // strike out the tasks
+$(".deleteTask").on("click",function(){
+    //need to grab that speific task then change class to striked and using css, have it strike out that tasks 
+    console.log("click")
+    // want to remove the item from array 
+    $(this).parent().addClass("striked");
+
+    saveTaskData();
+
+    //stringify it again
+});
+
 
 
 //clear task list 
@@ -69,10 +90,8 @@ $("#clearBtn", document.body).on("click", function(){
                $(".taskContainer").text("")
            }
             //delete everything in the taskContainer
-             $(".textList, .striked,.deleteTask").remove();
+             $(".striked,.deleteTask").remove();
             
-            //reseting numbers back to 0 so a new list can start with correct numerical order again
-            numberTask=0;
          });
        
     }
