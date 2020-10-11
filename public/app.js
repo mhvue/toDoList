@@ -3,7 +3,6 @@ let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 
 function addTasks(task){
     const info="<li><span>" + task + "</span><button class='deleteTask'>Done</button></li>";
-
     $("#taskList").append(info); 
 }
 
@@ -20,10 +19,8 @@ function saveTaskData(){
         arr.push($(this).text());
     });
 
-    //take those and save them into an new array. we will use this new array to save to local storage 
-    localStorage.setItem("taskInfo", JSON.stringify(arr))
-
     //set local storage
+    localStorage.setItem("taskInfo", JSON.stringify(arr))
 }
 
 
@@ -43,7 +40,6 @@ $("#btn").on("click", function(event){
         $("#cannotBlank").remove();
         $("#nothingMsg").remove();
         
-
         addTasks(text);
 
         saveTaskData();
@@ -65,8 +61,6 @@ $(".deleteTask").on("click",function(){
     $(this).parent().addClass("striked");
 
     saveTaskData();
-
-    //stringify it again
 });
 
 
@@ -100,7 +94,4 @@ $("#clearBtn", document.body).on("click", function(){
 
 
 //need to do:
-    //incorpoate localStorage 
-    //issues ran into: localStorage can only store strings meaning we cannot store the done button next to it
-    //fix issues with refresh, as localstorage clear but still showing data on to do list
-    //fix appending issue
+ //work on clear all due to added functions above on 10/11/20. Clear all now only deletes the Delete button
