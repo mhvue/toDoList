@@ -1,6 +1,16 @@
 
+/* body{
+    background-image: url("../images/plantBackground.jpg");
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+} */
+
+/* .jumbotron{
+    background-color: ;
+} */
 .allTaskHolder{
-    border: 2px solid;
+    /* border: 2px solid; */
     padding: 5px;
 }
 
@@ -29,4 +39,14 @@ input{
 
 #cannotBlank{
     color: red;
+}
+
+
+span{
+   display: inline-block;
+   margin-bottom: 10px;
+}
+
+.deleteTask{
+    float: right;
 }

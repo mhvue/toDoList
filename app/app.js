@@ -3,7 +3,7 @@ let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 //adding a task 
 function addTasks(task){
     //have a const to hold our listed items (which will be numbered)
-    const info="<li><span>" + task + "</span><button class='deleteTask'>Done</button></li>";
+    const info="<li><span>" + task + "</span><button class='deleteTask'>x</button></li>";
 
     //append those li to our taskList (which is ol on html side)
     $("#taskList").append(info); 
