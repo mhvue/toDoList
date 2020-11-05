@@ -6,8 +6,9 @@ body{
     font-family: 'Playfair Display', serif;
 } 
 
-.jumbotron{
+.jumbotron, footer{
     text-align: center;
+
 }
 .allTaskHolder{
     /* border: 2px solid; */
@@ -45,14 +46,20 @@ span{
 
 .deleteTask{
     float: right;
+    border-radius: 3px;
+    background-color: white;
 }
-.striked{
-    text-decoration: line-through;
+.taskRow{
+    border: 2px dotted;
+    padding: 10px;
 }
 
-.col-md-8{
-    border: 2px dotted;
-}
-.taskContainer{
+::-webkit-scrollbar {
     border: 2px solid;
+    background: transparent; 
 }
+::-webkit-scrollbar-thumb {
+    background: black; 
+  }
+
+
