@@ -57,7 +57,7 @@ $("#btn").on("click", function(event){
         $("#taskName").val(" ");
     }
     else{
-        $("#taskName").before("<span id='cannotBlank'>Task cannot be blank</span>");
+         $("#btn").after(" " + "<span id='cannotBlank'>*Task cannot be blank*</span>");
     }
 
 });
