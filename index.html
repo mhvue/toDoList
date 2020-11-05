@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./app/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     </head>
 
 
@@ -24,19 +25,20 @@
        
         <div class="row">
             <div class="col-md-8">
-                <form>
-                <label for="taskTitle">Task:</label>
-                <input type="text" id="taskName" placeholder="text here" name="tname">
-                <button id="btn" type="submit" value="Submit">Submit</button>
-                </form>
-                <br>
                 Instructions:
                 <ul>
-                  <li>Add as task and click Submit</li>
-                  <li>When you have completed the task, hit the x button. It'll delete from the list.</li>
+                  <li>Input a task and click Submit</li>
+                  <li>When you have completed the task, hit the "x" button. It'll delete from the list.</li>
                   <li> If you want to clear <span id="clearAll">all</span> items on the list, hit this button:
                        <button id="clearBtn">Clear All</button></li>
                 </ul>
+
+                <form>
+                  <label for="taskTitle">Task:</label>
+                  <input type="text" id="taskName" placeholder="text here" name="tname">
+                  <button id="btn" type="submit" value="Submit">Submit</button>
+                  </form>
+                  <br>
       
             </div>
     

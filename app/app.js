@@ -57,6 +57,7 @@ $("#btn").on("click", function(event){
         $("#taskName").val(" ");
     }
     else{
+        //show msg that input cannot be empty 
          $("#btn").after(" " + "<span id='cannotBlank'>*Task cannot be blank*</span>");
     }
 

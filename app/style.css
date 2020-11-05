@@ -1,13 +1,14 @@
-/* body{
-    background-image: url("../images/plantBackground.jpg");
+body{
+    /* background-image: url("../images/plantBackground.jpg");
     background-position: center;
     background-size:cover;
-    background-repeat: no-repeat;
-} */
+    background-repeat: no-repeat; */
+    font-family: 'Playfair Display', serif;
+} 
 
-/* .jumbotron{
-    background-color: ;
-} */
+.jumbotron{
+    text-align: center;
+}
 .allTaskHolder{
     /* border: 2px solid; */
     padding: 5px;
