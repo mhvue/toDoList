@@ -3,7 +3,7 @@ let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 //adding a task 
 function addTasks(task){
     //have a const to hold our listed items (which will be numbered)
-    const info="<li><span>" + task + "</span><button class='deleteTask'>x</button></li>";
+    const info="<li class='taskItem'><span>" + task + "</span><button class='deleteTask'>x</button></li>";
 
     //append those li to our taskList (which is ol on html side)
     $("#taskList").append(info); 
@@ -66,7 +66,7 @@ $("#btn").on("click", function(event){
  // fade out the tasks
 $(".deleteTask").on("click",function(){
     console.log(this)
-    //finding the item to be stricked 
+    //finding the item to be faded out 
      $(this).parent().addClass("fade").fadeOut();
     saveTaskData();
 });
@@ -87,7 +87,7 @@ $("#clearBtn", document.body).on("click", function(){
         //when click on Yes to agree on deleting everything, then delete everything tasks listed and clear local storage
         $(".yesBtn").on("click", function(){
             //delete everything in the taskContainer
-             $(".fade,.deleteTask, li").remove();
+             $(".fade,.deleteTask, .taskItem").remove();
 
              //clear local storage 
              localStorage.clear();
