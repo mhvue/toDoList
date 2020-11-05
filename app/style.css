@@ -4,12 +4,23 @@ body{
     background-size:cover;
     background-repeat: no-repeat; */
     font-family: 'Playfair Display', serif;
+   
 } 
 
-.jumbotron, footer{
+.jumbotron{
     text-align: center;
-
+    /* color: white; */
+    background-image: url("../images/diamondPattern.jpg");
 }
+
+.listTitle{
+    background-color: white;
+    border-radius: 10px;
+    
+     /*Stackover credit for below text-shadwo: https://stackoverflow.com/questions/4919076/outline-effect-to-text" */
+    /* text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; */
+}
+
 .allTaskHolder{
     /* border: 2px solid; */
     padding: 5px;
@@ -62,4 +73,6 @@ span{
     background: black; 
   }
 
-
+footer{
+    text-align: center;
+}
