@@ -20,7 +20,7 @@ function saveTaskData(){
     let arr=[];
 
     //take those and save them into an new array. we will use this new array to save to local storage 
-    $("#taskList > li").not(".striked").children("span").each(function(){
+    $("#taskList > li").not(".fade").children("span").each(function(){
         console.log(this);
         arr.push($(this).text());
     });
@@ -63,12 +63,11 @@ $("#btn").on("click", function(event){
 });
 
 
- // strike out the tasks
+ // fade out the tasks
 $(".deleteTask").on("click",function(){
-    //console.log(this)
+    console.log(this)
     //finding the item to be stricked 
-    $(this).parent().addClass("striked");
-
+     $(this).parent().addClass("fade").fadeOut();
     saveTaskData();
 });
 
@@ -88,7 +87,7 @@ $("#clearBtn", document.body).on("click", function(){
         //when click on Yes to agree on deleting everything, then delete everything tasks listed and clear local storage
         $(".yesBtn").on("click", function(){
             //delete everything in the taskContainer
-             $(".striked,.deleteTask, li").remove();
+             $(".fade,.deleteTask, li").remove();
 
              //clear local storage 
              localStorage.clear();

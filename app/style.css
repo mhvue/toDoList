@@ -1,4 +1,3 @@
-
 /* body{
     background-image: url("../images/plantBackground.jpg");
     background-position: center;
@@ -17,10 +16,6 @@
 input{
     margin-top: 5px;
 }
-.striked{
-    text-decoration: line-through;
-}
-
 #clearAll{
     font-weight: bold;
 }
@@ -49,4 +44,14 @@ span{
 
 .deleteTask{
     float: right;
+}
+.striked{
+    text-decoration: line-through;
+}
+
+.col-md-8{
+    border: 2px dotted;
+}
+.taskContainer{
+    border: 2px solid;
 }
