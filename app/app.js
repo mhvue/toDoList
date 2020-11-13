@@ -3,11 +3,10 @@ let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 //adding a task 
 function addTasks(task){
     //have a const to hold our listed items (which will be numbered)
-    const info="<li class='taskItem'><span>" + task + "</span><button class='deleteTask'>x</button></li>";
+     const info="<li class='taskItem'><span>" + task + "</span><button class='deleteTask'>x</button></li>";
 
     //append those li to our taskList (which is ol on html side)
     $("#taskList").append(info); 
-    // $("ul").sortable();
 }
 
 //saving task to local storage 
@@ -27,7 +26,7 @@ function saveTaskData(){
     });
 
     //set local storage with these items now 
-    localStorage.setItem("taskInfo", JSON.stringify(arr))
+    localStorage.setItem("taskInfo", JSON.stringify(arr));
 }
 
 //loop through task array 
@@ -64,8 +63,30 @@ $("#btn").on("click", function(event){
 
 });
 
-//draggable/sortable option
-$("ul").sortable();
+//add class to li if moved 
+function updateAfterSort(){
+    $("ul").sortable(); //so user can drag list 
+
+    $(".taskItem").children("span").addClass("moved");
+
+    //Next steps: have to rearrange an array then loop through again to push to new array 
+
+    //have to another empty array
+    let arrAfterMove = [];
+    console.log(arrAfterMove)
+    //take those and save them into an new array. we will use this new array to save to local storage 
+    $(".moved").each(function(){
+    console.log($(this).text());
+    arrAfterMove.push($(this).text());
+    });
+
+
+    //set local storage with these items now 
+    localStorage.setItem("taskInfo", JSON.stringify(arrAfterMove))
+
+}
+
+updateAfterSort();
 //update localStorage again
 
 
@@ -103,3 +124,4 @@ $("#clearBtn", document.body).on("click", function(){
    
 })
 
+//to do make sure not to add duplicate for tasks
