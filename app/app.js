@@ -7,6 +7,7 @@ function addTasks(task){
 
     //append those li to our taskList (which is ol on html side)
     $("#taskList").append(info); 
+    // $("ul").sortable();
 }
 
 //saving task to local storage 
@@ -62,6 +63,10 @@ $("#btn").on("click", function(event){
     }
 
 });
+
+//draggable/sortable option
+$("ul").sortable();
+//update localStorage again
 
 
  // fade out the tasks
