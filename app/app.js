@@ -63,6 +63,8 @@ $("#btn").on("click", function(event){
     }
 
 });
+
+//STILL WORKING ON BELOW
 //every time sortable is done, an array is updated 
    $("#taskList").sortable({
        update: updateAfterSort()
