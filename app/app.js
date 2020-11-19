@@ -3,11 +3,13 @@ let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 //adding a task 
 function addTasks(task){
     //have a const to hold our listed items (which will be numbered)
-     const info="<li class='taskItem'><span>" + task + "</span><button class='deleteTask'>x</button></li>";
+     const info="<li class='taskItem' id='"+ task + "'" +"><span>" + task + "</span><button class='deleteTask'>x</button></li>";
 
     //append those li to our taskList (which is ol on html side)
     $("#taskList").append(info); 
+
 }
+
 
 //saving task to local storage 
 function saveTaskData(){
@@ -52,7 +54,6 @@ $("#btn").on("click", function(event){
         addTasks(text);
 
         saveTaskData();
-
         //clearing our input box 
         $("#taskName").val(" ");
     }
@@ -62,23 +63,28 @@ $("#btn").on("click", function(event){
     }
 
 });
+//every time sortable is done, an array is updated 
+   $("#taskList").sortable({
+       update: updateAfterSort()
+   }); //so user can drag list, makes all li sortable 
 
 //add class to li if moved 
 function updateAfterSort(){
-    $("ul").sortable(); //so user can drag list 
-
-    $(".taskItem").children("span").addClass("moved");
+    // $(".taskItem").sortable(); //so user can drag list, makes all li sortable 
 
     //Next steps: have to rearrange an array then loop through again to push to new array 
-
     //have to another empty array
     let arrAfterMove = [];
     console.log(arrAfterMove)
     //take those and save them into an new array. we will use this new array to save to local storage 
-    $(".moved").each(function(){
-    console.log($(this).text());
-    arrAfterMove.push($(this).text());
-    });
+    //loop through and check by id to update?
+    $(".taskItem").each(function(){
+         //console.log($(this).attr("id").text())})
+         //console.log($(this).children("span").text())
+         arrAfterMove.push($(this).children("span").text());
+      // arrAfterMove.push($(".ui-sortable-handle").children("span").text());
+    //   arrAfterMove.push($(this).attr("id").text());
+     });
 
 
     //set local storage with these items now 
@@ -86,7 +92,7 @@ function updateAfterSort(){
 
 }
 
-updateAfterSort();
+// updateAfterSort();
 //update localStorage again
 
 
