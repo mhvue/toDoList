@@ -5,7 +5,4 @@ Creating a to do list to help myself stay organized:  https://mhvue.github.io/to
 Using localStorage to persist data.
 
 ## To Do:
-Style application more 
--add background color
--adjust Done buttons on list 
--make sure it is mobile friendly
+* Update localStorage after user moves list item (currently only updating at adding another task then resubmitting)

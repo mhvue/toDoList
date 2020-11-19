@@ -64,38 +64,28 @@ $("#btn").on("click", function(event){
 
 });
 
-//STILL WORKING ON BELOW
 //every time sortable is done, an array is updated 
    $("#taskList").sortable({
-       update: updateAfterSort()
-   }); //so user can drag list, makes all li sortable 
+       update: function(){
+        //have to rearrange an array as users move items due to sortable, then loop through again to push to new array 
 
-//add class to li if moved 
-function updateAfterSort(){
-    // $(".taskItem").sortable(); //so user can drag list, makes all li sortable 
+        //have to another empty array
+        let arrAfterMove = [];
+        console.log(arrAfterMove)
+        //take those and save them into an new array. we will use this new array to save to local storage 
 
-    //Next steps: have to rearrange an array then loop through again to push to new array 
-    //have to another empty array
-    let arrAfterMove = [];
-    console.log(arrAfterMove)
-    //take those and save them into an new array. we will use this new array to save to local storage 
-    //loop through and check by id to update?
-    $(".taskItem").each(function(){
-         //console.log($(this).attr("id").text())})
-         //console.log($(this).children("span").text())
-         arrAfterMove.push($(this).children("span").text());
-      // arrAfterMove.push($(".ui-sortable-handle").children("span").text());
-    //   arrAfterMove.push($(this).attr("id").text());
-     });
-
-
-    //set local storage with these items now 
-    localStorage.setItem("taskInfo", JSON.stringify(arrAfterMove))
-
-}
-
-// updateAfterSort();
-//update localStorage again
+        //loop though again 
+        $(".taskItem").each(function(){
+             arrAfterMove.push($(this).children("span").text());
+         });
+    
+    
+        //set local storage with these items now 
+        localStorage.setItem("taskInfo", JSON.stringify(arrAfterMove))
+    
+    }
+    
+   }); 
 
 
  // fade out the tasks
