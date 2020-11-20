@@ -65,8 +65,7 @@ $("#btn").on("click", function(event){
 });
 
 //every time sortable is done, an array is updated 
-$(function(){
-    $("#taskList").sortable({
+$("#taskList").sortable({
        update: function(){
         //have to rearrange an array as users move items due to sortable, then loop through again to push to new array 
 
@@ -87,9 +86,6 @@ $(function(){
     }
     
    }); 
-
-   $("#taskList").disableSelection();
-});
 
  // fade out the tasks
 $(".deleteTask").on("click",function(){
