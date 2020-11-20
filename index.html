@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="jquery.ui.touch-punch.min.js"></script>
     <link rel="stylesheet" href="./app/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     </head>
@@ -24,13 +23,13 @@
     <div class="container allTaskHolder">
        
         <div class="row taskRow">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <h4>Instructions:</h4>
                 <ul>
                   <li>Input a task and click Submit</li>
                   <li>When you have completed the task, hit the "x" button. It'll delete from the list.</li>
-                  <li>You can rearrange items on the list by clicking on it then dragging it where it you want it, depending when you like to complete the task.</li>
-                  <li>Make sure to use same browser you created your list so listed items will be saved for next time you return.</li>
+                  <li>You can rearrange items on the list by clicking on it then dragging it where you want it.*Does not work on mobile*</li>
+                  <li>Make sure to use same browser you created your list so listed items will be saved next time you return.</li>
                   <li> If you want to clear <span id="clearAll">all</span> items on the list, hit this button:
                        <button id="clearBtn">Clear All</button></li>
                 </ul>
@@ -39,13 +38,14 @@
                   <label for="taskTitle">Task:</label>
                   <input type="text" id="taskName" placeholder="text here" name="tname">
                   <button id="btn" type="submit" value="Submit">Submit</button>
-                  </form>
+                  <span id="cannotBlank"></span>
+                </form>
                   <br>
       
             </div>
     
          <!--list of to do shows up here-->
-            <div class="col-md-4 taskContainer">
+            <div class="col-md-5 taskContainer">
               <h4>To Dos:</h4>
               <ul id="taskList"></ul>
             </div>

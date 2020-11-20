@@ -5,7 +5,7 @@ function addTasks(task){
     //have a const to hold our listed items (which will be numbered)
      const info="<li class='taskItem' id='"+ task + "'" +"><span>" + task + "</span><button class='deleteTask'>x</button></li>";
 
-    //append those li to our taskList (which is ol on html side)
+    //append those li to our taskList (which is ul on html side)
     $("#taskList").append(info); 
 
 }
@@ -50,17 +50,22 @@ $("#btn").on("click", function(event){
         $("#cannotBlank").remove();
         //remove the msg to user informing there's no task added so far 
         $("#nothingMsg").remove();
-        
+       
         addTasks(text);
 
         saveTaskData();
         //clearing our input box 
         $("#taskName").val(" ");
-    }
-    else{
+        
+    } if(text == ""){
         //show msg that input cannot be empty 
-         $("#btn").after(" " + "<span id='cannotBlank'>*Task cannot be blank*</span>");
+         $("#cannotBlank").html("Task cannot be blank");
     }
+
+    // else{
+    //     //show msg that input cannot be empty 
+    //      $("#cannotBlank").html("Task cannot be blank");
+    // }
 
 });
 
@@ -119,6 +124,5 @@ $("#clearBtn", document.body).on("click", function(){
        
     }
    
-})
+});
 
-//to do make sure not to add duplicate for tasks
