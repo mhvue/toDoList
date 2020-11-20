@@ -87,6 +87,8 @@ $("#btn").on("click", function(event){
     
    }); 
 
+   $("#taskList").disableSelection();
+
 
  // fade out the tasks
 $(".deleteTask").on("click",function(){
