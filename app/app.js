@@ -1,14 +1,14 @@
 let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
+console.log(taskArr)
 
-//adding a task 
+//adding a task to html
 function addTasks(task){
     //have a const to hold our listed items (which will be numbered)
      const info="<li class='taskItem' id='"+ task + "'" +"><span>" + task + "</span><button class='deleteTask'>x</button></li>";
-
     //append those li to our taskList (which is ul on html side)
     $("#taskList").append(info); 
-
 }
+
 //saving task to local storage 
 function saveTaskData(){
     //console.log(this)
@@ -30,6 +30,7 @@ function saveTaskData(){
 }
 //loop through task array 
 for(let i = 0; i < taskArr.length; i++){
+    console.log("looop here "+ taskArr[i])
     //call addtask func with all the items from task array so the function can show user all the tasks 
     addTasks(taskArr[i]);
 }
@@ -46,24 +47,25 @@ $("#btn").on("click", function(event){
         $("#cannotBlank").remove();
         //remove the msg to user informing there's no task added so far 
         $("#nothingMsg").remove();
-       
-        addTasks(text);
 
+        //loop through task array to check for duplicate entries. *right now, only working by refreshing after adding tasks*.
+        for(let i = 0; i < taskArr.length; i++){
+            if(text == taskArr[i]){
+                $("#taskName").val("");
+                return $(".duplicateModal").modal();
+            }
+        }
+        addTasks(text);
         saveTaskData();
         //clearing our input box 
         $("#taskName").val("");
         
     } 
-    else{
+    else {
         //show msg that input cannot be empty 
          console.log("click here")
          $("#cannotBlank").show();
     }
-    // else{
-    //     //show msg that input cannot be empty 
-    //     console.log("click here")
-    //      $("#cannotBlank").html("<p>Task cannot be blank</p>");
-    // }
 
 });
 
@@ -74,15 +76,10 @@ $("#taskList").sortable({
 
         //have to another empty array
         let arrAfterMove = [];
-        console.log(arrAfterMove)
-        //take those and save them into an new array. we will use this new array to save to local storage 
-
         //loop though again 
         $(".taskItem").each(function(){
              arrAfterMove.push($(this).children("span").text());
          });
-    
-    
         //set local storage with these items now 
         localStorage.setItem("taskInfo", JSON.stringify(arrAfterMove))
     
