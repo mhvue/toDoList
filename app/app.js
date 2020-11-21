@@ -11,9 +11,7 @@ function addTasks(task){
 
 //saving task to local storage 
 function saveTaskData(){
-    //console.log(this)
-    //scan the list for objects that are not removed 
-
+    //scan the list for objects that are not removed
     //either way can work below:
     // $("#taskList > li") //direct children
     // $("#taskList  li") //desecent children
