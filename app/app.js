@@ -25,10 +25,13 @@ function saveTaskData(){
 
     //set local storage with these items now 
     localStorage.setItem("taskInfo", JSON.stringify(arr));
+
+    JSON.parse(localStorage.getItem("taskInfo"));
+    console.log(taskArr)
 }
 //loop through task array 
 for(let i = 0; i < taskArr.length; i++){
-    console.log("looop here "+ taskArr[i])
+    //console.log("looop here "+ taskArr[i])
     //call addtask func with all the items from task array so the function can show user all the tasks 
     addTasks(taskArr[i]);
 }
@@ -83,7 +86,7 @@ $("#taskList").sortable({
     
     }
     
-   }); 
+}); 
 
  // fade out the tasks
 $(".deleteTask").on("click",function(){
