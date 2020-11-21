@@ -9,8 +9,6 @@ function addTasks(task){
     $("#taskList").append(info); 
 
 }
-
-
 //saving task to local storage 
 function saveTaskData(){
     //console.log(this)
@@ -30,13 +28,11 @@ function saveTaskData(){
     //set local storage with these items now 
     localStorage.setItem("taskInfo", JSON.stringify(arr));
 }
-
 //loop through task array 
 for(let i = 0; i < taskArr.length; i++){
     //call addtask func with all the items from task array so the function can show user all the tasks 
     addTasks(taskArr[i]);
 }
-
  //when pressing submit btn when done inputing a task  
 $("#btn").on("click", function(event){
     //prevent the default action of the button on this form
@@ -46,7 +42,7 @@ $("#btn").on("click", function(event){
     const text = $("#taskName").val().trim();
 
     if(text) {
-        //removeing msg of cannot be blank if user enters text
+        //removing msg of cannot be blank if user enters text
         $("#cannotBlank").remove();
         //remove the msg to user informing there's no task added so far 
         $("#nothingMsg").remove();
@@ -55,16 +51,18 @@ $("#btn").on("click", function(event){
 
         saveTaskData();
         //clearing our input box 
-        $("#taskName").val(" ");
+        $("#taskName").val("");
         
-    } if(text == ""){
+    } 
+    else{
         //show msg that input cannot be empty 
-         $("#cannotBlank").html("Task cannot be blank");
+         console.log("click here")
+         $("#cannotBlank").show();
     }
-
     // else{
     //     //show msg that input cannot be empty 
-    //      $("#cannotBlank").html("Task cannot be blank");
+    //     console.log("click here")
+    //      $("#cannotBlank").html("<p>Task cannot be blank</p>");
     // }
 
 });

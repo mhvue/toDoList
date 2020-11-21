@@ -46,6 +46,7 @@ input{
 }
 
 #cannotBlank{
+    display: none;
     color: red;
 }
 
