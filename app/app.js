@@ -89,7 +89,7 @@ $("#taskList").sortable({
 }); 
 
  // fade out the tasks
-$(".deleteTask").on("click",function(){
+$(document.body).on("click",".deleteTask",function(){
     console.log(this)
     //finding the item to be faded out 
      $(this).parent().addClass("fade").fadeOut();
