@@ -3,6 +3,7 @@ console.log(taskArr)
 
 //adding a task to html
 function addTasks(task){
+    console.log(task)
     //have a const to hold our listed items (which will be numbered)
      const info="<li class='taskItem' id='"+ task + "'" +"><span>" + task + "</span><button class='deleteTask'>x</button></li>";
     //append those li to our taskList (which is ul on html side)
@@ -49,13 +50,15 @@ $("#btn").on("click", function(event){
         //remove the msg to user informing there's no task added so far 
         $("#nothingMsg").remove();
 
-        //loop through task array to check for duplicate entries. *right now, only working by refreshing after adding tasks*.
-        for(let i = 0; i < taskArr.length; i++){
-            if(text == taskArr[i]){
+        //loop through task array to checki for duplicate entries. *right now, only working by refreshing after adding tasks*.
+        for(let j = 0; j < taskArr.length; j++){
+            console.log(taskArr[j])
+            if(text == taskArr[j]){
                 $("#taskName").val("");
                 return $(".duplicateModal").modal();
             }
         }
+
         addTasks(text);
         saveTaskData();
         //clearing our input box 
@@ -99,7 +102,7 @@ $(document.body).on("click",".deleteTask",function(){
 
 
 //clear ALL the tasks in the list 
-$("#clearBtn", document.body).on("click", function(){
+$("#clearBtn").on("click", function(){
      //adding msg if there are no tasks listed, but clear all btn was pressed by user
     //credit If statement to https://stackoverflow.com/questions/6813227/how-do-i-check-if-an-html-element-is-empty-using-jquery/18488130
     if(($.trim($("#taskList").html())=='')){
