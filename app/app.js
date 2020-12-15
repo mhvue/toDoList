@@ -1,9 +1,9 @@
 let taskArr=JSON.parse(localStorage.getItem("taskInfo")) || [];
 console.log(taskArr)
-
+console.log(localStorage.length)
 //adding a task to html
 function addTasks(task){
-    console.log(task)
+    //console.log(task)
     //have a const to hold our listed items (which will be numbered)
      const info="<li class='taskItem' id='"+ task + "'" +"><span>" + task + "</span><button class='deleteTask'>x</button></li>";
     //append those li to our taskList (which is ul on html side)
@@ -20,15 +20,16 @@ function saveTaskData(){
 
     //take those and save them into an new array. we will use this new array to save to local storage 
     $("#taskList > li").not(".fade").children("span").each(function(){
-        console.log(this);
+        //console.log(this);
         arr.push($(this).text());
     });
 
-    //set local storage with these items now 
-    localStorage.setItem("taskInfo", JSON.stringify(arr));
+    // //set local storage with these items now 
+    taskArr.push(localStorage.setItem("taskInfo", JSON.stringify(arr)))
 
-    JSON.parse(localStorage.getItem("taskInfo"));
-    console.log(taskArr)
+    // JSON.parse(localStorage.getItem("taskInfo"));
+   
+
 }
 //loop through task array 
 for(let i = 0; i < taskArr.length; i++){
@@ -50,14 +51,15 @@ $("#btn").on("click", function(event){
         //remove the msg to user informing there's no task added so far 
         $("#nothingMsg").remove();
 
-        //loop through task array to checki for duplicate entries. *right now, only working by refreshing after adding tasks*.
-        for(let j = 0; j < taskArr.length; j++){
-            console.log(taskArr[j])
-            if(text == taskArr[j]){
-                $("#taskName").val("");
-                return $(".duplicateModal").modal();
-            }
-        }
+        //loop through task array to check for duplicate entries. *right now, only working by refreshing after adding tasks*.
+        // for(let j = 0; j < taskArr.length; j++){
+        //     console.log(taskArr[j])
+        //     if(text == taskArr[j]){
+        //         console.log(taskArr[j]);
+        //         $("#taskName").val("");
+        //         return $(".duplicateModal").modal();
+        //     }
+        // }
 
         addTasks(text);
         saveTaskData();
@@ -85,7 +87,7 @@ $("#taskList").sortable({
              arrAfterMove.push($(this).children("span").text());
          });
         //set local storage with these items now 
-        localStorage.setItem("taskInfo", JSON.stringify(arrAfterMove))
+        localStorage.setItem("taskInfo", JSON.stringify(arrAfterMove));
     
     }
     
@@ -116,9 +118,14 @@ $("#clearBtn").on("click", function(){
         $(".yesBtn").on("click", function(){
             //delete everything in the taskContainer
              $(".fade,.deleteTask, .taskItem").remove();
-
              //clear local storage 
              localStorage.clear();
+             console.log(localStorage.length)
+             //figure out the problem, need to get array to empty. so YES, localStorage is empty but the taskArry is not empty
+             if(localStorage.length === 0){
+                taskArr = []; //can't empty array
+             }
+            
          });
        
     }
